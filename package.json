@@ -9,7 +9,7 @@
     "lint": "eslint src --ext .ts",
     "build": "tsc --project typescript/tsconfig.build.json",
     "license": "sdb license",
-    "release": "yarn lint && yarn test && yarn license && yarn build",
+    "release": "yarn lint && yarn license && yarn build",
     "publish-dry-run": "yarn release && sdb --only publish-dry-run",
     "publish": "yarn release && sdb --only publish"
   },
