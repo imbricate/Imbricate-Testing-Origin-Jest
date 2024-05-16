@@ -98,7 +98,7 @@ export const startImbricateOriginPageUpdateTest = (
             const before = page.updatedAt;
 
             const afterDate = new Date();
-            afterDate.setFullYear(afterDate.getFullYear() + 1);
+            afterDate.setTime(before.getTime() + 1000);
 
             await page.refreshUpdatedAt(afterDate);
 
@@ -112,26 +112,29 @@ export const startImbricateOriginPageUpdateTest = (
             const before = page.updatedAt;
 
             const afterDate = new Date();
-            afterDate.setFullYear(afterDate.getFullYear() + 1);
+            afterDate.setTime(before.getTime() + 1000);
+
+            expect(page.historyRecords).toHaveLength(1);
 
             await page.refreshUpdateMetadata(afterDate, "updated-content-digest");
 
             const after = page.updatedAt;
 
+            expect(page.historyRecords).toHaveLength(2);
             expect(after.getTime()).toBeGreaterThan(before.getTime());
             expect(page.digest).toBe("updated-content-digest");
         });
 
         it("should be able to add history record", async (): Promise<void> => {
 
-            expect(page.historyRecords).toHaveLength(1);
+            expect(page.historyRecords).toHaveLength(2);
 
             await page.addHistoryRecord({
                 digest: "updated-content-digest",
                 updatedAt: new Date(),
             });
 
-            expect(page.historyRecords).toHaveLength(2);
+            expect(page.historyRecords).toHaveLength(3);
 
             expect(page.historyRecords[0].digest).not.toBe("updated-content-digest");
             expect(page.historyRecords[1].digest).toBe("updated-content-digest");
