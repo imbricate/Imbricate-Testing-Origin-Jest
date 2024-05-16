@@ -51,26 +51,26 @@ export const startImbricateOriginScriptSearchTest = (
             }
         });
 
-        it("should be able to search scripts", async (): Promise<void> => {
+        it("should be able to search scripts with item limits", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const scripts: ImbricateScriptSearchResult[] = await origin.searchScripts(
                 "script",
                 {
-                    limit: 10,
+                    itemLimit: 10,
                 },
             );
 
             expect(scripts).toHaveLength(2);
         });
 
-        it("should be able to search scripts with limit", async (): Promise<void> => {
+        it("should be able to search scripts with item limit missed", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const scripts: ImbricateScriptSearchResult[] = await origin.searchScripts(
                 "script",
                 {
-                    limit: 1,
+                    itemLimit: 1,
                 },
             );
 

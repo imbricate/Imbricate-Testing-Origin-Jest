@@ -81,12 +81,12 @@ export const startImbricateOriginPageSearchTest = (
             }
         });
 
-        it("should be able to search pages", async (): Promise<void> => {
+        it("should be able to search pages with item limits", async (): Promise<void> => {
 
             const pages: ImbricatePageSearchResult[] = await collection.searchPages(
                 "hello",
                 {
-                    limit: 10,
+                    itemLimit: 10,
                 },
             );
 
