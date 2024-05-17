@@ -13,6 +13,22 @@ yarn add @imbricate/test-origin-jest
 npm install @imbricate/test-origin-jest --save
 ```
 
+## Usage
+
+To test an Imbricate origin, simply supply the origin as a `TestingTarget` to `startImbricateOriginTest`.
+
+```js
+import { testOrigin } from '@imbricate/test-origin-jest';
+
+testOrigin({
+  origin: 'http://localhost:3000',
+  paths: [
+    '/api/v1/users',
+    '/api/v1/users/1',
+  ],
+});
+```
+
 ## Documentation
 
 Visit [imbricate.io](https://imbricate.io/).
