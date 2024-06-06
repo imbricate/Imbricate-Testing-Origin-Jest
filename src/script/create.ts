@@ -4,15 +4,19 @@
  * @description Create
  */
 
-import { IImbricateOrigin, IImbricateScript } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, IMBRICATE_ORIGIN_CAPABILITY_KEY } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { describeOriginTest } from "../util/describe-origin";
 
 export const startImbricateOriginScriptCreateTest = (
     testingTarget: ImbricateOriginTestingTarget,
 ): void => {
 
-    describe("Test Imbricate Script (Create) Features", () => {
+    describeOriginTest(
+        testingTarget,
+        [IMBRICATE_ORIGIN_CAPABILITY_KEY.ORIGIN_SCRIPT_MANAGER],
+    )("Test Imbricate Script (Create) Features", () => {
 
         const scriptToBeDeleted: ScriptToBeDeleted[] = [];
 
@@ -24,19 +28,23 @@ export const startImbricateOriginScriptCreateTest = (
 
                 console.log(script.identifier);
 
-                await origin.deleteScript(
-                    script.identifier,
-                );
+                await origin
+                    .getScriptManager()
+                    .deleteScript(
+                        script.identifier,
+                    );
             }
         });
 
         it("should be able to create script", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const script: IImbricateScript = await origin.createScript(
-                "test-script",
-                "test-content",
-            );
+            const script: IImbricateScript = await origin
+                .getScriptManager()
+                .createScript(
+                    "test-script",
+                    "test-content",
+                );
 
             scriptToBeDeleted.push({
                 identifier: script.identifier,
@@ -48,9 +56,11 @@ export const startImbricateOriginScriptCreateTest = (
 
             expect(scriptContent).toBe("test-content");
 
-            const getScript: IImbricateScript | null = await origin.getScript(
-                script.identifier,
-            );
+            const getScript: IImbricateScript | null = await origin
+                .getScriptManager()
+                .getScript(
+                    script.identifier,
+                );
 
             expect(getScript).toBeDefined();
             expect(getScript!.identifier).toBe(script.identifier);
@@ -60,9 +70,11 @@ export const startImbricateOriginScriptCreateTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const hasScript: boolean = await origin.hasScript(
-                "test-script",
-            );
+            const hasScript: boolean = await origin
+                .getScriptManager()
+                .hasScript(
+                    "test-script",
+                );
 
             expect(hasScript).toBe(true);
         });
