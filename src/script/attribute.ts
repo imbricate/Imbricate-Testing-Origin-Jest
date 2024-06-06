@@ -4,15 +4,19 @@
  * @description Attribute
  */
 
-import { IImbricateOrigin, IImbricateScript } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, IMBRICATE_ORIGIN_CAPABILITY_KEY } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { describeOriginTest } from "../util/describe-origin";
 
 export const startImbricateOriginScriptAttributeTest = (
     testingTarget: ImbricateOriginTestingTarget,
 ): void => {
 
-    describe("Test Imbricate Script (Attribute) Features", () => {
+    describeOriginTest(
+        testingTarget,
+        [IMBRICATE_ORIGIN_CAPABILITY_KEY.ORIGIN_SCRIPT_MANAGER],
+    )("Test Imbricate Script (Attribute) Features", () => {
 
         const scriptToBeDeleted: ScriptToBeDeleted[] = [];
         let script: IImbricateScript = null as unknown as IImbricateScript;
@@ -21,10 +25,12 @@ export const startImbricateOriginScriptAttributeTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const testScript: IImbricateScript = await origin.createScript(
-                "test-script",
-                "test-content",
-            );
+            const testScript: IImbricateScript = await origin
+                .getScriptManager()
+                .createScript(
+                    "test-script",
+                    "test-content",
+                );
 
             scriptToBeDeleted.push({
                 identifier: testScript.identifier,
@@ -38,9 +44,11 @@ export const startImbricateOriginScriptAttributeTest = (
 
             for (const script of scriptToBeDeleted) {
 
-                await origin.deleteScript(
-                    script.identifier,
-                );
+                await origin
+                    .getScriptManager()
+                    .deleteScript(
+                        script.identifier,
+                    );
             }
         });
 
