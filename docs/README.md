@@ -1,5 +1,6 @@
 # Imbricate-Testing-Origin-Jest
 
+[![Continuous Integration](https://github.com/Imbricate/Imbricate-Testing-Origin-Jest/actions/workflows/ci.yml/badge.svg)](https://github.com/Imbricate/Imbricate-Testing-Origin-Jest/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/%40imbricate%2Ftest-origin-jest.svg)](https://badge.fury.io/js/%40imbricate%2Ftest-origin-jest)
 [![downloads](https://img.shields.io/npm/dm/@imbricate/test-origin-jest.svg)](https://www.npmjs.com/package/@imbricate/test-origin-jest)
 
