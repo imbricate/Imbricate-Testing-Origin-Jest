@@ -4,15 +4,19 @@
  * @description Search
  */
 
-import { IImbricateOrigin, IImbricateScript, ImbricateScriptSearchResult } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, IMBRICATE_ORIGIN_CAPABILITY_KEY, ImbricateScriptSearchResult } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { describeOriginTest } from "../util/describe-origin";
 
 export const startImbricateOriginScriptSearchTest = (
     testingTarget: ImbricateOriginTestingTarget,
 ): void => {
 
-    describe("Test Imbricate Script (Search) Features", () => {
+    describeOriginTest(
+        testingTarget,
+        [IMBRICATE_ORIGIN_CAPABILITY_KEY.ORIGIN_SCRIPT_MANAGER],
+    )("Test Imbricate Script (Search) Features", () => {
 
         const scriptToBeDeleted: ScriptToBeDeleted[] = [];
 
@@ -20,19 +24,23 @@ export const startImbricateOriginScriptSearchTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const firstScript: IImbricateScript = await origin.createScript(
-                "first-script",
-                "first-content",
-            );
+            const firstScript: IImbricateScript = await origin
+                .getScriptManager()
+                .createScript(
+                    "first-script",
+                    "first-content",
+                );
 
             scriptToBeDeleted.push({
                 identifier: firstScript.identifier,
             });
 
-            const secondScript: IImbricateScript = await origin.createScript(
-                "second-script",
-                "second-content",
-            );
+            const secondScript: IImbricateScript = await origin
+                .getScriptManager()
+                .createScript(
+                    "second-script",
+                    "second-content",
+                );
 
             scriptToBeDeleted.push({
                 identifier: secondScript.identifier,
@@ -45,21 +53,25 @@ export const startImbricateOriginScriptSearchTest = (
 
             for (const script of scriptToBeDeleted) {
 
-                await origin.deleteScript(
-                    script.identifier,
-                );
+                await origin
+                    .getScriptManager()
+                    .deleteScript(
+                        script.identifier,
+                    );
             }
         });
 
         it("should be able to search scripts with item limits", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const scripts: ImbricateScriptSearchResult[] = await origin.searchScripts(
-                "script",
-                {
-                    itemLimit: 10,
-                },
-            );
+            const scripts: ImbricateScriptSearchResult[] = await origin
+                .getScriptManager()
+                .searchScripts(
+                    "script",
+                    {
+                        itemLimit: 10,
+                    },
+                );
 
             expect(scripts).toHaveLength(2);
         });
@@ -67,12 +79,14 @@ export const startImbricateOriginScriptSearchTest = (
         it("should be able to search scripts with item limit missed", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const scripts: ImbricateScriptSearchResult[] = await origin.searchScripts(
-                "script",
-                {
-                    itemLimit: 1,
-                },
-            );
+            const scripts: ImbricateScriptSearchResult[] = await origin
+                .getScriptManager()
+                .searchScripts(
+                    "script",
+                    {
+                        itemLimit: 1,
+                    },
+                );
 
             expect(scripts).toHaveLength(1);
         });
