@@ -4,19 +4,15 @@
  * @description Search
  */
 
-import { IImbricateOrigin, IImbricateScript, IMBRICATE_ORIGIN_CAPABILITY_KEY, ImbricateScriptSearchResult } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, ImbricateScriptSearchResult } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
-import { describeOriginTest } from "../util/describe-origin";
 
 export const startImbricateOriginScriptSearchTest = (
     testingTarget: ImbricateOriginTestingTarget,
 ): void => {
 
-    describeOriginTest(
-        testingTarget,
-        [IMBRICATE_ORIGIN_CAPABILITY_KEY.ORIGIN_SCRIPT_MANAGER],
-    )("Test Imbricate Script (Search) Features", () => {
+    describe("Test Imbricate Script (Search) Features", () => {
 
         const scriptToBeDeleted: ScriptToBeDeleted[] = [];
 
