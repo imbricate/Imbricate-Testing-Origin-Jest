@@ -7,6 +7,7 @@
 import { startImbricateOriginCollectionCreateTest } from "./collection/create";
 import { startImbricateOriginCollectionFindTest } from "./collection/find";
 import { startImbricateOriginCollectionRenameTest } from "./collection/rename";
+import { describeImbricateOriginTest } from "./describe-test";
 import { startImbricateOriginPageAttributeTest } from "./page/attribute";
 import { startImbricateOriginPageCreateTest } from "./page/create";
 import { startImbricateOriginPageListTest } from "./page/list";
@@ -24,31 +25,27 @@ export const startImbricateOriginTest = (
     testingTarget: ImbricateOriginTestingTarget,
 ): void => {
 
-    describe("End-to-End Test for Imbricate Origin with Imbricate Origin Testing in Jest", () => {
+    describeImbricateOriginTest(
+        "End-to-End Test for Imbricate Origin with Imbricate Origin Testing in Jest",
+        testingTarget,
+        () => {
 
-        beforeAll(async () => {
-            await testingTarget.construct();
-        });
+            startImbricateOriginCollectionCreateTest(testingTarget);
+            startImbricateOriginCollectionFindTest(testingTarget);
+            startImbricateOriginCollectionRenameTest(testingTarget);
 
-        afterAll(async () => {
-            await testingTarget.dispose();
-        });
+            startImbricateOriginPageAttributeTest(testingTarget);
+            startImbricateOriginPageCreateTest(testingTarget);
+            startImbricateOriginPageListTest(testingTarget);
+            startImbricateOriginPageRetitleTest(testingTarget);
+            startImbricateOriginPageSearchTest(testingTarget);
+            startImbricateOriginPageUpdateTest(testingTarget);
 
-        startImbricateOriginCollectionCreateTest(testingTarget);
-        startImbricateOriginCollectionFindTest(testingTarget);
-        startImbricateOriginCollectionRenameTest(testingTarget);
-
-        startImbricateOriginPageAttributeTest(testingTarget);
-        startImbricateOriginPageCreateTest(testingTarget);
-        startImbricateOriginPageListTest(testingTarget);
-        startImbricateOriginPageRetitleTest(testingTarget);
-        startImbricateOriginPageSearchTest(testingTarget);
-        startImbricateOriginPageUpdateTest(testingTarget);
-
-        startImbricateOriginScriptAttributeTest(testingTarget);
-        startImbricateOriginScriptCreateTest(testingTarget);
-        startImbricateOriginScriptListTest(testingTarget);
-        startImbricateOriginScriptRenameTest(testingTarget);
-        startImbricateOriginScriptSearchTest(testingTarget);
-    });
+            startImbricateOriginScriptAttributeTest(testingTarget);
+            startImbricateOriginScriptCreateTest(testingTarget);
+            startImbricateOriginScriptListTest(testingTarget);
+            startImbricateOriginScriptRenameTest(testingTarget);
+            startImbricateOriginScriptSearchTest(testingTarget);
+        },
+    );
 };
