@@ -24,7 +24,9 @@ export const startImbricateOriginPageUpdateTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const testCollection: IImbricateCollection =
-                await origin.createCollection("test-page-update");
+                await origin
+                    .getCollectionManager()
+                    .createCollection("test-page-update");
 
             collectionToBeDeleted.push(testCollection.uniqueIdentifier);
 
@@ -49,7 +51,9 @@ export const startImbricateOriginPageUpdateTest = (
 
             for (const page of pageToBeDeleted) {
 
-                const collection = await origin.getCollection(page.collectionIdentifier);
+                const collection = await origin
+                    .getCollectionManager()
+                    .getCollection(page.collectionIdentifier);
                 if (!collection) {
                     throw new Error("Collection not found");
                 }
@@ -57,7 +61,9 @@ export const startImbricateOriginPageUpdateTest = (
             }
 
             for (const collectionUniqueIdentifier of collectionToBeDeleted) {
-                await origin.deleteCollection(collectionUniqueIdentifier);
+                await origin
+                    .getCollectionManager()
+                    .deleteCollection(collectionUniqueIdentifier);
             }
         });
 

@@ -20,7 +20,9 @@ export const startImbricateOriginCollectionRenameTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const createdCollection: IImbricateCollection =
-                await origin.createCollection("test-collection-rename");
+                await origin
+                    .getCollectionManager()
+                    .createCollection("test-collection-rename");
 
             toBeDeleted.push(createdCollection.uniqueIdentifier);
             collection = createdCollection;
@@ -30,7 +32,9 @@ export const startImbricateOriginCollectionRenameTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             for (const collectionUniqueIdentifier of toBeDeleted) {
-                await origin.deleteCollection(collectionUniqueIdentifier);
+                await origin
+                    .getCollectionManager()
+                    .deleteCollection(collectionUniqueIdentifier);
             }
         });
 
@@ -38,12 +42,16 @@ export const startImbricateOriginCollectionRenameTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const foundCollectionByIdentifier: IImbricateCollection | null = await origin.getCollection(collection.uniqueIdentifier);
+            const foundCollectionByIdentifier: IImbricateCollection | null = await origin
+                .getCollectionManager()
+                .getCollection(collection.uniqueIdentifier);
 
             expect(foundCollectionByIdentifier).toBeDefined();
             expect(foundCollectionByIdentifier!.collectionName).toBe("test-collection-rename");
 
-            const foundCollectionByName: IImbricateCollection | null = await origin.findCollection("test-collection-rename");
+            const foundCollectionByName: IImbricateCollection | null = await origin
+                .getCollectionManager()
+                .findCollection("test-collection-rename");
 
             expect(foundCollectionByName).toBeDefined();
             expect(foundCollectionByName!.collectionName).toBe("test-collection-rename");
@@ -53,22 +61,28 @@ export const startImbricateOriginCollectionRenameTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            await origin.renameCollection(
-                collection.uniqueIdentifier,
-                "test-collection-rename-new",
-            );
+            await origin
+                .getCollectionManager()
+                .renameCollection(
+                    collection.uniqueIdentifier,
+                    "test-collection-rename-new",
+                );
         });
 
         it("should be able to confirm the updated collection name", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const foundCollectionByIdentifier: IImbricateCollection | null = await origin.getCollection(collection.uniqueIdentifier);
+            const foundCollectionByIdentifier: IImbricateCollection | null = await origin
+                .getCollectionManager()
+                .getCollection(collection.uniqueIdentifier);
 
             expect(foundCollectionByIdentifier).toBeDefined();
             expect(foundCollectionByIdentifier!.collectionName).toBe("test-collection-rename-new");
 
-            const foundCollectionByName: IImbricateCollection | null = await origin.findCollection("test-collection-rename-new");
+            const foundCollectionByName: IImbricateCollection | null = await origin
+                .getCollectionManager()
+                .findCollection("test-collection-rename-new");
 
             expect(foundCollectionByName).toBeDefined();
             expect(foundCollectionByName!.collectionName).toBe("test-collection-rename-new");

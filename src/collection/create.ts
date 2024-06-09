@@ -19,7 +19,9 @@ export const startImbricateOriginCollectionCreateTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             for (const collectionUniqueIdentifier of toBeDeleted) {
-                await origin.deleteCollection(collectionUniqueIdentifier);
+                await origin
+                    .getCollectionManager()
+                    .deleteCollection(collectionUniqueIdentifier);
             }
         });
 
@@ -27,7 +29,9 @@ export const startImbricateOriginCollectionCreateTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const hasCollection: boolean =
-                await origin.hasCollection("test-collection");
+                await origin
+                    .getCollectionManager()
+                    .hasCollection("test-collection");
 
             expect(hasCollection).toBeFalsy();
         });
@@ -35,7 +39,9 @@ export const startImbricateOriginCollectionCreateTest = (
         it("should be able to create collection", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const collection: IImbricateCollection = await origin.createCollection("test-collection");
+            const collection: IImbricateCollection = await origin
+                .getCollectionManager()
+                .createCollection("test-collection");
 
             toBeDeleted.push(collection.uniqueIdentifier);
 
@@ -45,7 +51,9 @@ export const startImbricateOriginCollectionCreateTest = (
         it("should contain collection after creation", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const hasCollection: boolean = await origin.hasCollection("test-collection");
+            const hasCollection: boolean = await origin
+                .getCollectionManager()
+                .hasCollection("test-collection");
 
             expect(hasCollection).toBeTruthy();
         });
@@ -53,7 +61,9 @@ export const startImbricateOriginCollectionCreateTest = (
         it("should included in list", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const collections: IImbricateCollection[] = await origin.listCollections();
+            const collections: IImbricateCollection[] = await origin
+                .getCollectionManager()
+                .listCollections();
 
             const collection: IImbricateCollection | undefined = collections.find(
                 (each: IImbricateCollection) => {

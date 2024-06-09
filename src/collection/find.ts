@@ -20,7 +20,9 @@ export const startImbricateOriginCollectionFindTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const createdCollection: IImbricateCollection =
-                await origin.createCollection("test-collection-find");
+                await origin
+                    .getCollectionManager()
+                    .createCollection("test-collection-find");
 
             toBeDeleted.push(createdCollection.uniqueIdentifier);
             collection = createdCollection;
@@ -30,7 +32,9 @@ export const startImbricateOriginCollectionFindTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             for (const collectionUniqueIdentifier of toBeDeleted) {
-                await origin.deleteCollection(collectionUniqueIdentifier);
+                await origin
+                    .getCollectionManager()
+                    .deleteCollection(collectionUniqueIdentifier);
             }
         });
 
@@ -38,7 +42,9 @@ export const startImbricateOriginCollectionFindTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const collection: IImbricateCollection | null = await origin.findCollection("test-collection-find");
+            const collection: IImbricateCollection | null = await origin
+                .getCollectionManager()
+                .findCollection("test-collection-find");
 
             expect(collection).toBeDefined();
             expect(collection!.collectionName).toBe("test-collection-find");
@@ -48,7 +54,9 @@ export const startImbricateOriginCollectionFindTest = (
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
 
-            const getCollection: IImbricateCollection | null = await origin.getCollection(collection.uniqueIdentifier);
+            const getCollection: IImbricateCollection | null = await origin
+                .getCollectionManager()
+                .getCollection(collection.uniqueIdentifier);
 
             expect(getCollection).toBeDefined();
             expect(getCollection!.collectionName).toBe("test-collection-find");
