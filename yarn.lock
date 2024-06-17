@@ -1761,17 +1761,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@imbricate/core@npm:^1.29.0":
-  version: 1.29.0
-  resolution: "@imbricate/core@npm:1.29.0"
+"@imbricate/core@npm:^1.31.0":
+  version: 1.31.0
+  resolution: "@imbricate/core@npm:1.31.0"
   dependencies:
-    "@sudoo/marked": "npm:^3.21.4"
-    "@sudoo/marked-mixin-date": "npm:^1.0.0"
-    "@sudoo/marked-mixin-json": "npm:^1.0.0"
-    "@sudoo/marked-mixin-math": "npm:^1.4.0"
-    "@sudoo/marked-mixin-object": "npm:^1.3.0"
-    "@sudoo/marked-mixin-parse": "npm:^1.0.0"
-  checksum: 10c0/b85a9c5b4a6015ff67cf15c895d146759428a04c7df2e357abf3056dc5a1396cd5803679ded45f45f0d4e2ea8756269a54a1008d0bc5b789733feda33e6cbc6b
+    "@sudoo/marked-mixin-date": "npm:1.0.0"
+    "@sudoo/marked-mixin-json": "npm:1.0.0"
+    "@sudoo/marked-mixin-math": "npm:1.4.0"
+    "@sudoo/marked-mixin-object": "npm:1.3.0"
+    "@sudoo/marked-mixin-parse": "npm:1.0.0"
+  peerDependencies:
+    "@sudoo/marked": "*"
+  checksum: 10c0/33d2dfb5a0963b38d12d3a5419223195ec43cea6ee4d5249f5e9c6d31bcb57b592a88d856f6c739fc569540dd15f48b0bac3322290338f6dab29c920f20971a9
   languageName: node
   linkType: hard
 
@@ -1782,7 +1783,7 @@ __metadata:
     "@babel/core": "npm:^7.24.7"
     "@babel/preset-env": "npm:^7.24.7"
     "@babel/preset-typescript": "npm:^7.24.7"
-    "@imbricate/core": "npm:^1.29.0"
+    "@imbricate/core": "npm:^1.31.0"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.2"
     "@typescript-eslint/eslint-plugin": "npm:^7.13.0"
@@ -2194,7 +2195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sudoo/marked-mixin-date@npm:^1.0.0":
+"@sudoo/marked-mixin-date@npm:1.0.0":
   version: 1.0.0
   resolution: "@sudoo/marked-mixin-date@npm:1.0.0"
   dependencies:
@@ -2205,7 +2206,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sudoo/marked-mixin-json@npm:^1.0.0":
+"@sudoo/marked-mixin-json@npm:1.0.0":
   version: 1.0.0
   resolution: "@sudoo/marked-mixin-json@npm:1.0.0"
   dependencies:
@@ -2216,7 +2217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sudoo/marked-mixin-math@npm:^1.4.0":
+"@sudoo/marked-mixin-math@npm:1.4.0":
   version: 1.4.0
   resolution: "@sudoo/marked-mixin-math@npm:1.4.0"
   dependencies:
@@ -2227,7 +2228,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sudoo/marked-mixin-object@npm:^1.3.0":
+"@sudoo/marked-mixin-object@npm:1.3.0":
   version: 1.3.0
   resolution: "@sudoo/marked-mixin-object@npm:1.3.0"
   dependencies:
@@ -2238,7 +2239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sudoo/marked-mixin-parse@npm:^1.0.0":
+"@sudoo/marked-mixin-parse@npm:1.0.0":
   version: 1.0.0
   resolution: "@sudoo/marked-mixin-parse@npm:1.0.0"
   dependencies:
@@ -2255,18 +2256,6 @@ __metadata:
   peerDependencies:
     "@sudoo/marked": "*"
   checksum: 10c0/17f52678c2ebb5927a8c3530c7abb0ec399a7e094ac41710448e629d78dce3ba51f88b1fc262815155ac165ef4ffd4f1499b2358ba834d208c589ed237442e84
-  languageName: node
-  linkType: hard
-
-"@sudoo/marked@npm:^3.21.4":
-  version: 3.21.4
-  resolution: "@sudoo/marked@npm:3.21.4"
-  dependencies:
-    acorn: "npm:8.9.0"
-    acorn-walk: "npm:8.2.0"
-    sourcemap-codec: "npm:1.4.8"
-    typescript: "npm:5.1.3"
-  checksum: 10c0/d27d97bd38241f22a506db17f22f1367511fd9df8bbf4c16ee67e7c5e2b75f1482758f0b8e84b0504e5ee423fa9d64997b991cfdf46931c60c1187ff259a4150
   languageName: node
   linkType: hard
 
@@ -2565,26 +2554,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-walk@npm:8.2.0":
-  version: 8.2.0
-  resolution: "acorn-walk@npm:8.2.0"
-  checksum: 10c0/dbe92f5b2452c93e960c5594e666dd1fae141b965ff2cb4a1e1d0381e3e4db4274c5ce4ffa3d681a86ca2a8d4e29d5efc0670a08e23fd2800051ea387df56ca2
-  languageName: node
-  linkType: hard
-
 "acorn-walk@npm:^8.1.1":
   version: 8.3.2
   resolution: "acorn-walk@npm:8.3.2"
   checksum: 10c0/7e2a8dad5480df7f872569b9dccff2f3da7e65f5353686b1d6032ab9f4ddf6e3a2cb83a9b52cf50b1497fd522154dda92f0abf7153290cc79cd14721ff121e52
-  languageName: node
-  linkType: hard
-
-"acorn@npm:8.9.0":
-  version: 8.9.0
-  resolution: "acorn@npm:8.9.0"
-  bin:
-    acorn: bin/acorn
-  checksum: 10c0/5b51689d56f1ca5d6ea1fa58af478affd8d3396403637abcbc7caf28e1a47beb537cf1654f537b6cf4c73377f3e1aa99fd4a50674e64daefe08cb25c799ded28
   languageName: node
   linkType: hard
 
@@ -5466,13 +5439,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sourcemap-codec@npm:1.4.8":
-  version: 1.4.8
-  resolution: "sourcemap-codec@npm:1.4.8"
-  checksum: 10c0/f099279fdaae070ff156df7414bbe39aad69cdd615454947ed3e19136bfdfcb4544952685ee73f56e17038f4578091e12b17b283ed8ac013882916594d95b9e6
-  languageName: node
-  linkType: hard
-
 "sprintf-js@npm:^1.1.3":
   version: 1.1.3
   resolution: "sprintf-js@npm:1.1.3"
@@ -5742,16 +5708,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.1.3":
-  version: 5.1.3
-  resolution: "typescript@npm:5.1.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/1faba8d5ffd4717864ddce767613c5ab77c1c8510c1ce21dc9b112a4c662357b9338dc0a6121615266d3a44ebec699f115ef2dabf18d9d7341ea1675692b9b24
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^5.4.5":
   version: 5.4.5
   resolution: "typescript@npm:5.4.5"
@@ -5759,16 +5715,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/2954022ada340fd3d6a9e2b8e534f65d57c92d5f3989a263754a78aba549f7e6529acc1921913560a4b816c46dce7df4a4d29f9f11a3dc0d4213bb76d043251e
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A5.1.3#optional!builtin<compat/typescript>":
-  version: 5.1.3
-  resolution: "typescript@patch:typescript@npm%3A5.1.3#optional!builtin<compat/typescript>::version=5.1.3&hash=5da071"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/769c5a11a9d5207ae5ce4c84b5c7a72ad92a28877a0061881ccfb326a43a1a1de79c4daff2f9d74720137744cfc9332fddbfbc4c3973c1e859b2f977f5d11b72
   languageName: node
   linkType: hard
 
