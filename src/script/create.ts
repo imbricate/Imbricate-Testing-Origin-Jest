@@ -22,8 +22,6 @@ export const startImbricateOriginScriptCreateTest = (
 
             for (const script of scriptToBeDeleted) {
 
-                console.log(script.identifier);
-
                 await origin
                     .getScriptManager()
                     .deleteScript(
