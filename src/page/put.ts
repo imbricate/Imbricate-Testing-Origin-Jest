@@ -4,7 +4,7 @@
  * @description Put
  */
 
-import { IImbricateCollection, IImbricateOrigin, IImbricatePage, ImbricatePageMetadata } from "@imbricate/core";
+import { IImbricateCollection, IImbricateOrigin, IImbricatePage, IMBRICATE_PAGE_VARIANT, ImbricatePageMetadata } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
@@ -61,6 +61,7 @@ export const startImbricateOriginPagePutTest = (
             const pageMetadata: ImbricatePageMetadata = {
                 directories: [],
                 title: "test-page",
+                variant: IMBRICATE_PAGE_VARIANT.MARKDOWN,
                 identifier: "test-page",
                 createdAt: new Date(),
                 updatedAt: new Date(),

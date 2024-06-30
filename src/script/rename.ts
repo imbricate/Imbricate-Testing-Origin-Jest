@@ -4,7 +4,7 @@
  * @description Rename
  */
 
-import { IImbricateOrigin, IImbricateScript } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, IMBRICATE_EXECUTABLE_VARIANT } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
@@ -25,6 +25,7 @@ export const startImbricateOriginScriptRenameTest = (
                 .getScriptManager()
                 .createScript(
                     "old-script-name",
+                    IMBRICATE_EXECUTABLE_VARIANT.JAVASCRIPT_NODE,
                     "test-content",
                 );
 

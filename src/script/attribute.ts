@@ -4,7 +4,7 @@
  * @description Attribute
  */
 
-import { IImbricateOrigin, IImbricateScript } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, IMBRICATE_EXECUTABLE_VARIANT } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
@@ -25,6 +25,7 @@ export const startImbricateOriginScriptAttributeTest = (
                 .getScriptManager()
                 .createScript(
                     "test-script",
+                    IMBRICATE_EXECUTABLE_VARIANT.JAVASCRIPT_NODE,
                     "test-content",
                 );
 
