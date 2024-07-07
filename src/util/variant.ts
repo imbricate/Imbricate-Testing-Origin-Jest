@@ -9,7 +9,9 @@ import { IMBRICATE_PAGE_VARIANT_LANGUAGE, IMBRICATE_SCRIPT_LANGUAGE, ImbricatePa
 export const mockScriptVariant: ImbricateScriptVariant = {
 
     language: IMBRICATE_SCRIPT_LANGUAGE.JAVASCRIPT,
+
     engine: "node",
+    version: "^12",
 };
 
 export const mockPageVariant: ImbricatePageVariant = {
