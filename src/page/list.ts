@@ -4,9 +4,10 @@
  * @description List
  */
 
-import { IImbricateCollection, IImbricateOrigin, IImbricatePage, IMBRICATE_PAGE_VARIANT, ImbricatePageSnapshot } from "@imbricate/core";
+import { IImbricateCollection, IImbricateOrigin, IImbricatePage, ImbricatePageSnapshot } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { mockPageVariant } from "../util/variant";
 
 export const startImbricateOriginPageListTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -34,7 +35,7 @@ export const startImbricateOriginPageListTest = (
             const rootLevelPage: IImbricatePage = await collection.createPage(
                 [],
                 "root-level-page",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "test-content",
             );
 
@@ -46,7 +47,7 @@ export const startImbricateOriginPageListTest = (
             const directoriesLevelPage: IImbricatePage = await collection.createPage(
                 ["directories"],
                 "directories-level-page",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "test-content",
             );
 
@@ -58,7 +59,7 @@ export const startImbricateOriginPageListTest = (
             const directoriesLevelPageTwo: IImbricatePage = await collection.createPage(
                 ["directories"],
                 "directories-level-page-two",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "test-content",
             );
 
@@ -70,7 +71,7 @@ export const startImbricateOriginPageListTest = (
             const thirdLevelPage: IImbricatePage = await collection.createPage(
                 ["directories", "third-level"],
                 "third-level-page",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "test-content",
             );
 

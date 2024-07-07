@@ -4,9 +4,10 @@
  * @description Retitle
  */
 
-import { IImbricateCollection, IImbricateOrigin, IImbricatePage, IMBRICATE_PAGE_VARIANT } from "@imbricate/core";
+import { IImbricateCollection, IImbricateOrigin, IImbricatePage } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { mockPageVariant } from "../util/variant";
 
 export const startImbricateOriginPageRetitleTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -35,7 +36,7 @@ export const startImbricateOriginPageRetitleTest = (
             const testPage: IImbricatePage = await collection.createPage(
                 [],
                 "old-title",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "test-content",
             );
 

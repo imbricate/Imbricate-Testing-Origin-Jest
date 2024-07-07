@@ -4,9 +4,10 @@
  * @description Search
  */
 
-import { IImbricateCollection, IImbricateOrigin, IImbricatePage, IMBRICATE_PAGE_VARIANT, ImbricatePageSearchResult } from "@imbricate/core";
+import { IImbricateCollection, IImbricateOrigin, IImbricatePage, ImbricatePageSearchResult } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { mockPageVariant } from "../util/variant";
 
 export const startImbricateOriginPageSearchTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -34,7 +35,7 @@ export const startImbricateOriginPageSearchTest = (
             const titlePage: IImbricatePage = await collection.createPage(
                 [],
                 "title-with-hello",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "test-content",
             );
 
@@ -46,7 +47,7 @@ export const startImbricateOriginPageSearchTest = (
             const contentPage: IImbricatePage = await collection.createPage(
                 [],
                 "title-with-nothing",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "content-hello",
             );
 
@@ -58,7 +59,7 @@ export const startImbricateOriginPageSearchTest = (
             const bothPage: IImbricatePage = await collection.createPage(
                 [],
                 "title with hello and content",
-                IMBRICATE_PAGE_VARIANT.MARKDOWN,
+                mockPageVariant,
                 "content-hello",
             );
 
