@@ -138,6 +138,7 @@ export const startImbricateOriginPageUpdateTest = (
             expect(page.historyRecords).toHaveLength(2);
 
             await page.addHistoryRecord({
+                author: "test-author",
                 digest: "updated-content-digest",
                 updatedAt: new Date(),
             });

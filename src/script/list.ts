@@ -4,9 +4,10 @@
  * @description List
  */
 
-import { IImbricateOrigin, IImbricateScript, IMBRICATE_EXECUTABLE_VARIANT, ImbricateScriptSnapshot } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, ImbricateScriptSnapshot } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { mockScriptVariant } from "../util/variant";
 
 export const startImbricateOriginScriptListTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -24,7 +25,7 @@ export const startImbricateOriginScriptListTest = (
                 .getScriptManager()
                 .createScript(
                     "first-script",
-                    IMBRICATE_EXECUTABLE_VARIANT.JAVASCRIPT_NODE,
+                    mockScriptVariant,
                     "first-content",
                 );
 
@@ -36,7 +37,7 @@ export const startImbricateOriginScriptListTest = (
                 .getScriptManager()
                 .createScript(
                     "second-script",
-                    IMBRICATE_EXECUTABLE_VARIANT.JAVASCRIPT_NODE,
+                    mockScriptVariant,
                     "second-content",
                 );
 
