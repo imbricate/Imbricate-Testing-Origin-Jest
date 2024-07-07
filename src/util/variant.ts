@@ -4,10 +4,15 @@
  * @description Variant
  */
 
-import { IMBRICATE_SCRIPT_LANGUAGE, ImbricateScriptVariant } from "@imbricate/core";
+import { IMBRICATE_PAGE_VARIANT_LANGUAGE, IMBRICATE_SCRIPT_LANGUAGE, ImbricatePageVariant, ImbricateScriptVariant } from "@imbricate/core";
 
 export const mockScriptVariant: ImbricateScriptVariant = {
 
     language: IMBRICATE_SCRIPT_LANGUAGE.JAVASCRIPT,
     engine: "node",
+};
+
+export const mockPageVariant: ImbricatePageVariant = {
+
+    language: IMBRICATE_PAGE_VARIANT_LANGUAGE.MARKDOWN,
 };
