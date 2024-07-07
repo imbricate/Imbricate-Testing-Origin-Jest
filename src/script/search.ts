@@ -4,7 +4,7 @@
  * @description Search
  */
 
-import { IImbricateOrigin, IImbricateScript, IMBRICATE_EXECUTABLE_VARIANT, ImbricateScriptSearchResult } from "@imbricate/core";
+import { IImbricateOrigin, IImbricateScript, ImbricateScriptSearchResult } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
