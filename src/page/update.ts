@@ -6,6 +6,7 @@
 
 import { IImbricateCollection, IImbricateOrigin, IImbricatePage } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
+import { testAuthor } from "../mock";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 import { mockPageVariant } from "../util/variant";
 
@@ -138,7 +139,7 @@ export const startImbricateOriginPageUpdateTest = (
             expect(page.historyRecords).toHaveLength(2);
 
             await page.addHistoryRecord({
-                author: "test-author",
+                author: testAuthor,
                 digest: "updated-content-digest",
                 updatedAt: new Date(),
             });
