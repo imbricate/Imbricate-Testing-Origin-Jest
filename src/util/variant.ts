@@ -4,11 +4,11 @@
  * @description Variant
  */
 
-import { IMBRICATE_PAGE_VARIANT_LANGUAGE, IMBRICATE_SCRIPT_EXECUTE_LAYER, IMBRICATE_SCRIPT_LANGUAGE, ImbricatePageVariant, ImbricateScriptVariant } from "@imbricate/core";
+import { IMBRICATE_PAGE_VARIANT_LANGUAGE, IMBRICATE_SCRIPT_EXECUTE_LAYER, IMBRICATE_SCRIPT_VARIANT_LANGUAGE, ImbricatePageVariant, ImbricateScriptVariant } from "@imbricate/core";
 
 export const mockScriptVariant: ImbricateScriptVariant = {
 
-    language: IMBRICATE_SCRIPT_LANGUAGE.JAVASCRIPT,
+    language: IMBRICATE_SCRIPT_VARIANT_LANGUAGE.JAVASCRIPT,
 
     engine: "node",
     version: "^12",

@@ -1,7 +1,7 @@
 {
   "name": "@imbricate/test-origin-jest",
   "packageManager": "yarn@4.4.0",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Jest test kit for Imbricate Origin Testing",
   "scripts": {
     "test": "jest",
@@ -33,7 +33,7 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.7",
-    "@imbricate/core": "^2.6.0",
+    "@imbricate/core": "^2.6.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.1.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
