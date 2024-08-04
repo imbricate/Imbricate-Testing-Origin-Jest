@@ -6,6 +6,7 @@
 
 import { IImbricateCollection, IImbricateOrigin, IImbricatePage, ImbricatePageSearchResult } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
+import { testAuthor } from "../mock";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 import { mockPageVariant } from "../util/variant";
 
@@ -36,6 +37,7 @@ export const startImbricateOriginPageSearchTest = (
                 [],
                 "title-with-hello",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 
@@ -48,6 +50,7 @@ export const startImbricateOriginPageSearchTest = (
                 [],
                 "title-with-nothing",
                 mockPageVariant,
+                testAuthor,
                 "content-hello",
             );
 
@@ -60,6 +63,7 @@ export const startImbricateOriginPageSearchTest = (
                 [],
                 "title with hello and content",
                 mockPageVariant,
+                testAuthor,
                 "content-hello",
             );
 

@@ -6,6 +6,7 @@
 
 import { IImbricateOrigin, IImbricateScript, ImbricateScriptSnapshot } from "@imbricate/core";
 import { ScriptToBeDeleted } from "../definition";
+import { testAuthor } from "../mock";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 import { mockScriptVariant } from "../util/variant";
 
@@ -26,6 +27,7 @@ export const startImbricateOriginScriptListTest = (
                 .createScript(
                     "first-script",
                     mockScriptVariant,
+                    testAuthor,
                     "first-content",
                 );
 
@@ -38,6 +40,7 @@ export const startImbricateOriginScriptListTest = (
                 .createScript(
                     "second-script",
                     mockScriptVariant,
+                    testAuthor,
                     "second-content",
                 );
 

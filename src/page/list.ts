@@ -6,6 +6,7 @@
 
 import { IImbricateCollection, IImbricateOrigin, IImbricatePage, ImbricatePageSnapshot } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
+import { testAuthor } from "../mock";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 import { mockPageVariant } from "../util/variant";
 
@@ -36,6 +37,7 @@ export const startImbricateOriginPageListTest = (
                 [],
                 "root-level-page",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 
@@ -48,6 +50,7 @@ export const startImbricateOriginPageListTest = (
                 ["directories"],
                 "directories-level-page",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 
@@ -60,6 +63,7 @@ export const startImbricateOriginPageListTest = (
                 ["directories"],
                 "directories-level-page-two",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 
@@ -72,6 +76,7 @@ export const startImbricateOriginPageListTest = (
                 ["directories", "third-level"],
                 "third-level-page",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 

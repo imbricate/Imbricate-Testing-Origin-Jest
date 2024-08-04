@@ -38,6 +38,7 @@ export const startImbricateOriginPageUpdateTest = (
                 [],
                 "test-page-update",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 
@@ -125,7 +126,11 @@ export const startImbricateOriginPageUpdateTest = (
 
             expect(page.historyRecords).toHaveLength(1);
 
-            await page.refreshUpdateMetadata(afterDate, "updated-content-digest");
+            await page.refreshUpdateMetadata(
+                afterDate,
+                "updated-content-digest",
+                testAuthor,
+            );
 
             const after = page.updatedAt;
 

@@ -6,6 +6,7 @@
 
 import { IImbricateCollection, IImbricateOrigin, IImbricatePage } from "@imbricate/core";
 import { PageToBeDeleted } from "../definition";
+import { testAuthor } from "../mock";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 import { mockPageVariant } from "../util/variant";
 
@@ -37,6 +38,7 @@ export const startImbricateOriginPageAttributeTest = (
                 [],
                 "test-page-update",
                 mockPageVariant,
+                testAuthor,
                 "test-content",
             );
 
