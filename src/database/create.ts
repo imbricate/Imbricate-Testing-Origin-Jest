@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Collection
+ * @namespace Database
  * @description Create
  */
 
