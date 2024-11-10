@@ -5,25 +5,34 @@
  */
 
 import { IImbricateOrigin } from "@imbricate/core";
-import { ImbricateOriginTestConstructionFunction } from "./definition";
+import { ImbricateOriginTestConstructionFunction, ImbricateOriginTestResetFunction } from "./definition";
 
 export class ImbricateOriginTestingTarget {
 
     public static fromConstructor(
         originConstructor: ImbricateOriginTestConstructionFunction,
+        originResetFunction: ImbricateOriginTestResetFunction,
     ): ImbricateOriginTestingTarget {
 
-        return new ImbricateOriginTestingTarget(originConstructor);
+        return new ImbricateOriginTestingTarget(
+            originConstructor,
+            originResetFunction,
+        );
     }
 
     private _originConstructor: ImbricateOriginTestConstructionFunction;
+    private _originResetFunction: ImbricateOriginTestResetFunction;
+
     private _targetOrigin: IImbricateOrigin | null;
 
     public constructor(
         originConstructor: ImbricateOriginTestConstructionFunction,
+        originResetFunction: ImbricateOriginTestResetFunction,
     ) {
 
         this._originConstructor = originConstructor;
+        this._originResetFunction = originResetFunction;
+
         this._targetOrigin = null;
     }
 
@@ -34,6 +43,11 @@ export class ImbricateOriginTestingTarget {
         }
 
         return this._targetOrigin;
+    }
+
+    public async resetOrigin(): Promise<void> {
+
+        await this._originResetFunction();
     }
 
     public async construct(): Promise<void> {

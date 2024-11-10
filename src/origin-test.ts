@@ -4,7 +4,7 @@
  * @description Origin Test
  */
 
-import { startImbricateOriginCollectionCreateTest } from "./database/create";
+import { startImbricateOriginDatabaseCreateTest } from "./database/create";
 import { describeImbricateOriginTest } from "./describe-test";
 import { ImbricateOriginTestingTarget } from "./testing-target";
 
@@ -17,7 +17,7 @@ export const startImbricateOriginTest = (
         testingTarget,
         () => {
 
-            startImbricateOriginCollectionCreateTest(testingTarget);
+            startImbricateOriginDatabaseCreateTest(testingTarget);
         },
     );
 };

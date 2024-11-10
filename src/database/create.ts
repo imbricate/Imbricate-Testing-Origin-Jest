@@ -4,74 +4,36 @@
  * @description Create
  */
 
-import { IImbricateCollection, IImbricateOrigin } from "@imbricate/core";
+import { IImbricateOrigin, IMBRICATE_PROPERTY_TYPE } from "@imbricate/core";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
-export const startImbricateOriginCollectionCreateTest = (
+export const startImbricateOriginDatabaseCreateTest = (
     testingTarget: ImbricateOriginTestingTarget,
 ): void => {
 
-    describe("Test Imbricate Collection (Create) Features", () => {
+    describe("Test Imbricate Database (Create) Functions", () => {
 
-        const toBeDeleted: string[] = [];
+        beforeAll(async () => {
 
-        afterAll(async () => {
-
-            const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            for (const collectionUniqueIdentifier of toBeDeleted) {
-                await origin
-                    .getCollectionManager()
-                    .deleteCollection(collectionUniqueIdentifier);
-            }
+            await testingTarget.resetOrigin();
         });
 
-        it("should not contain collection at the beginning", async (): Promise<void> => {
+        it("should be able to create database", async (): Promise<void> => {
 
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const hasCollection: boolean =
-                await origin
-                    .getCollectionManager()
-                    .hasCollection("test-collection");
+            const databaseManager = origin.getDatabaseManager();
 
-            expect(hasCollection).toBeFalsy();
-        });
+            await databaseManager.createDatabase("test-database", {
+                properties: [{
+                    propertyIdentifier: "test-property",
+                    propertyName: "test-property",
+                    propertyType: IMBRICATE_PROPERTY_TYPE.STRING,
+                }],
+            });
 
-        it("should be able to create collection", async (): Promise<void> => {
+            const databases = await databaseManager.getDatabases();
 
-            const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const collection: IImbricateCollection = await origin
-                .getCollectionManager()
-                .createCollection("test-collection");
-
-            toBeDeleted.push(collection.uniqueIdentifier);
-
-            expect(collection).toBeDefined();
-        });
-
-        it("should contain collection after creation", async (): Promise<void> => {
-
-            const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const hasCollection: boolean = await origin
-                .getCollectionManager()
-                .hasCollection("test-collection");
-
-            expect(hasCollection).toBeTruthy();
-        });
-
-        it("should included in list", async (): Promise<void> => {
-
-            const origin: IImbricateOrigin = testingTarget.ensureOrigin();
-            const collections: IImbricateCollection[] = await origin
-                .getCollectionManager()
-                .listCollections();
-
-            const collection: IImbricateCollection | undefined = collections.find(
-                (each: IImbricateCollection) => {
-                    return each.collectionName === "test-collection";
-                },
-            );
-
-            expect(collection).toBeDefined();
+            expect(databases).toHaveLength(1);
         });
     });
 };
