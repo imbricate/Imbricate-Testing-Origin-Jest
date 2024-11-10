@@ -1727,10 +1727,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@imbricate/core@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "@imbricate/core@npm:2.6.2"
-  checksum: 10c0/38ea56203a35882c09e5cb841273c5e1c6346103d8b4d5d8dc32a604d47e2b86e63678a3638a33bb469695daf5b72f079cc3e078a362c408772680e258b4760a
+"@imbricate/core@file:../Imbricate/app::locator=%40imbricate%2Ftest-origin-jest%40workspace%3A.":
+  version: 3.0.0
+  resolution: "@imbricate/core@file:../Imbricate/app#../Imbricate/app::hash=9b3c59&locator=%40imbricate%2Ftest-origin-jest%40workspace%3A."
+  checksum: 10c0/d4b04bc8f8ea11ea2be564e3ebfef7847a41e167321874ec705312baaf5d84d66d10eb3a5dd66ac7c67af258c9624bb8fad973e9d2875afa8cf21ced1c5f75c4
   languageName: node
   linkType: hard
 
@@ -1741,7 +1741,7 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/preset-typescript": "npm:^7.26.0"
-    "@imbricate/core": "npm:^2.6.2"
+    "@imbricate/core": ../Imbricate/app
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.9.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.13.0"
