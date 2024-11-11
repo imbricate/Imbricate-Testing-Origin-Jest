@@ -1,12 +1,12 @@
 {
   "name": "@imbricate/test-origin-jest",
   "packageManager": "yarn@4.4.0",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Jest test kit for Imbricate Origin Testing",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint src",
     "build": "tsc --project typescript/tsconfig.build.json",
     "license": "sdb license",
     "release": "yarn lint && yarn license && yarn build",
@@ -33,7 +33,7 @@
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-typescript": "^7.26.0",
-    "@imbricate/core": "../Imbricate/app",
+    "@imbricate/core": "^3.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^8.14.0",
