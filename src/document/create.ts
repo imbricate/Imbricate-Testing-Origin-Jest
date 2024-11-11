@@ -5,6 +5,7 @@
  */
 
 import { IImbricateOrigin, IMBRICATE_PROPERTY_TYPE } from "@imbricate/core";
+import assert from "node:assert";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
 export const startImbricateOriginDocumentCreateTest = (
@@ -48,11 +49,33 @@ export const startImbricateOriginDocumentCreateTest = (
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
-            });
+            }, "test-unique-identifier");
 
             const documents = await database.queryDocuments({});
 
             expect(documents).toHaveLength(1);
+        });
+
+        it("should be able to get document by unique identifier", async (): Promise<void> => {
+
+            const origin: IImbricateOrigin = testingTarget.ensureOrigin();
+            const databaseManager = origin.getDatabaseManager();
+
+            const databases = await databaseManager.getDatabases();
+            const database = databases[0];
+
+            const document = await database.getDocument("test-unique-identifier");
+
+            assert(document !== null);
+
+            const properties = await document.getProperties();
+
+            expect(properties).toEqual({
+                hello: {
+                    type: IMBRICATE_PROPERTY_TYPE.STRING,
+                    value: "world",
+                },
+            });
         });
     });
 };
