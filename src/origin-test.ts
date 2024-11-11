@@ -9,6 +9,7 @@ import { describeImbricateOriginTest } from "./describe-test";
 import { startImbricateOriginDocumentCreateTest } from "./document/create";
 import { startImbricateOriginDocumentUpdateTest } from "./document/update";
 import { ImbricateOriginTestingTarget } from "./testing-target";
+import { startImbricateOriginTextCreateTest } from "./text/create";
 
 export const startImbricateOriginTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -23,6 +24,8 @@ export const startImbricateOriginTest = (
 
             startImbricateOriginDocumentCreateTest(testingTarget);
             startImbricateOriginDocumentUpdateTest(testingTarget);
+
+            startImbricateOriginTextCreateTest(testingTarget);
         },
     );
 };

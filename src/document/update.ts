@@ -66,7 +66,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument("test-unique-identifier");
 
-            assert(document !== null);
+            assert(document !== null, "Document should not be null");
 
             const properties = await document.getProperties();
 
@@ -102,7 +102,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument("test-unique-identifier");
 
-            assert(document !== null);
+            assert(document !== null, "Document should not be null");
 
             const properties = await document.getProperties();
 
@@ -140,7 +140,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument("test-unique-identifier");
 
-            assert(document !== null);
+            assert(document !== null, "Document should not be null");
 
             const records = await document.getEditRecords();
             expect(records).toHaveLength(1);
@@ -156,7 +156,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument("test-unique-identifier");
 
-            assert(document !== null);
+            assert(document !== null, "Document should not be null");
 
             const editRecords = await document.putProperties({
                 hello: {
