@@ -7,6 +7,7 @@
 import { startImbricateOriginDatabaseCreateTest } from "./database/create";
 import { describeImbricateOriginTest } from "./describe-test";
 import { startImbricateOriginDocumentCreateTest } from "./document/create";
+import { startImbricateOriginDocumentUpdateTest } from "./document/update";
 import { ImbricateOriginTestingTarget } from "./testing-target";
 
 export const startImbricateOriginTest = (
@@ -21,6 +22,7 @@ export const startImbricateOriginTest = (
             startImbricateOriginDatabaseCreateTest(testingTarget);
 
             startImbricateOriginDocumentCreateTest(testingTarget);
+            startImbricateOriginDocumentUpdateTest(testingTarget);
         },
     );
 };
