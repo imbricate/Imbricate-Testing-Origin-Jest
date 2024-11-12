@@ -1727,10 +1727,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@imbricate/core@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@imbricate/core@npm:3.0.0"
-  checksum: 10c0/1569ba65ebe52745c9d143e68960c43a544763fdba825c19c4d926ff6c6a9d6878c942c43fcc077ac51710a91a7769b36158b2b6442faa20dccdf1fbe7fa173a
+"@imbricate/core@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@imbricate/core@npm:3.0.1"
+  checksum: 10c0/9b2337fbe3ca06c3b61082a2817b9482ab9556e2044f3b4ba7c8a3b476faa5ccca0ee26c1eeebdd7fa1828f734a8b286b19e177636ac58a111438feadf65a679
   languageName: node
   linkType: hard
 
@@ -1741,7 +1741,7 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/preset-typescript": "npm:^7.26.0"
-    "@imbricate/core": "npm:^3.0.0"
+    "@imbricate/core": "npm:^3.0.1"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.9.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.14.0"

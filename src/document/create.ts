@@ -26,8 +26,7 @@ export const startImbricateOriginDocumentCreateTest = (
 
             await databaseManager.createDatabase("test-database", {
                 properties: [{
-                    propertyIdentifier: "test-property",
-                    propertyName: "test-property",
+                    propertyName: "test",
                     propertyType: IMBRICATE_PROPERTY_TYPE.STRING,
                 }],
             });
@@ -38,14 +37,14 @@ export const startImbricateOriginDocumentCreateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.getDatabases();
+            const databases = await databaseManager.listDatabases();
 
             expect(databases).toHaveLength(1);
 
             const database = databases[0];
 
             await database.createDocument({
-                hello: {
+                test: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
@@ -61,7 +60,7 @@ export const startImbricateOriginDocumentCreateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.getDatabases();
+            const databases = await databaseManager.listDatabases();
             const database = databases[0];
 
             const document = await database.getDocument("test-unique-identifier");
@@ -71,7 +70,7 @@ export const startImbricateOriginDocumentCreateTest = (
             const properties = await document.getProperties();
 
             expect(properties).toEqual({
-                hello: {
+                test: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },

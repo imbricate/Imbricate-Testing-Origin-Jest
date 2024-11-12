@@ -25,13 +25,12 @@ export const startImbricateOriginDatabaseCreateTest = (
 
             await databaseManager.createDatabase("test-database", {
                 properties: [{
-                    propertyIdentifier: "test-property",
                     propertyName: "test-property",
                     propertyType: IMBRICATE_PROPERTY_TYPE.STRING,
                 }],
             });
 
-            const databases = await databaseManager.getDatabases();
+            const databases = await databaseManager.listDatabases();
 
             expect(databases).toHaveLength(1);
         });
