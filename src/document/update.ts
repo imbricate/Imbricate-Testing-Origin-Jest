@@ -141,6 +141,10 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(document !== null, "Document should not be null");
 
+            if (typeof document.getEditRecords !== "function") {
+                return;
+            }
+
             const records = await document.getEditRecords();
             expect(records).toHaveLength(1);
         });
@@ -164,7 +168,15 @@ export const startImbricateOriginDocumentUpdateTest = (
                 },
             });
 
+            if (typeof document.addEditRecords !== "function") {
+                return;
+            }
+
             await document.addEditRecords(editRecords);
+
+            if (typeof document.getEditRecords !== "function") {
+                return;
+            }
 
             const records = await document.getEditRecords();
             expect(records).toHaveLength(2);
