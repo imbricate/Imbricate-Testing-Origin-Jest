@@ -73,9 +73,7 @@ export const startImbricateOriginDocumentCreateTest = (
 
             assert(document !== null);
 
-            const properties = await document.getProperties();
-
-            expect(properties).toEqual({
+            expect(document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",

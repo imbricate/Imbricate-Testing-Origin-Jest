@@ -1727,10 +1727,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@imbricate/core@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@imbricate/core@npm:3.1.0"
-  checksum: 10c0/a52f73dd5d21b89f1cebf7e557ff13f69b594b1c707cde0136951510263a50af685deb77a5f4987a3933477267b293944f4a7466ef8629d5990e58119b172f86
+"@imbricate/core@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "@imbricate/core@npm:3.1.2"
+  checksum: 10c0/1d3ce89314d5086fbc02e1f12c401aabed76ecbddf67c27adbc2eb16fdf3d8ec16f69c54fff1f3f53307ceb174d3970d1f7bd4d5ec0bcf62b8e39a4204600cd0
   languageName: node
   linkType: hard
 
@@ -1741,9 +1741,9 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/preset-typescript": "npm:^7.26.0"
-    "@imbricate/core": "npm:^3.1.0"
+    "@imbricate/core": "npm:^3.1.2"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@typescript-eslint/eslint-plugin": "npm:^8.15.0"
     "@typescript-eslint/parser": "npm:^8.15.0"
     babel-jest: "npm:^29.7.0"
@@ -2289,12 +2289,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.9.0":
-  version: 22.9.0
-  resolution: "@types/node@npm:22.9.0"
+"@types/node@npm:^22.9.1":
+  version: 22.9.1
+  resolution: "@types/node@npm:22.9.1"
   dependencies:
     undici-types: "npm:~6.19.8"
-  checksum: 10c0/3f46cbe0a49bab4ba30494025e4c8a6e699b98ac922857aa1f0209ce11a1313ee46e6808b8f13fe5b8b960a9d7796b77c8d542ad4e9810e85ef897d5593b5d51
+  checksum: 10c0/ea489ae603aa8874e4e88980aab6f2dad09c755da779c88dd142983bfe9609803c89415ca7781f723072934066f63daf2b3339ef084a8ad1a8079cf3958be243
   languageName: node
   linkType: hard
 

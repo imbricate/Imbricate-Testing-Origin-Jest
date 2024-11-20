@@ -73,9 +73,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(document !== null, "Document should not be null");
 
-            const properties = await document.getProperties();
-
-            expect(properties).toEqual({
+            expect(document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
@@ -87,9 +85,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 value: "new-world",
             });
 
-            const newProperties = await document.getProperties();
-
-            expect(newProperties).toEqual({
+            expect(document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
@@ -112,9 +108,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(document !== null, "Document should not be null");
 
-            const properties = await document.getProperties();
-
-            expect(properties).toEqual({
+            expect(document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
@@ -128,9 +122,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 },
             });
 
-            const newProperties = await document.getProperties();
-
-            expect(newProperties).toEqual({
+            expect(document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
