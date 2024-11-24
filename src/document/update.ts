@@ -28,6 +28,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 properties: [{
                     propertyName: "test",
                     propertyType: IMBRICATE_PROPERTY_TYPE.STRING,
+                    propertyOptions: {},
                 }],
             });
         });

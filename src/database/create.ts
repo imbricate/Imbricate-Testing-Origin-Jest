@@ -27,6 +27,7 @@ export const startImbricateOriginDatabaseCreateTest = (
                 properties: [{
                     propertyName: "test-property",
                     propertyType: IMBRICATE_PROPERTY_TYPE.STRING,
+                    propertyOptions: {},
                 }],
             });
 
