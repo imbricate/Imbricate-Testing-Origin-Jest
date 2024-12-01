@@ -24,13 +24,12 @@ export const startImbricateOriginTextCreateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const textManager = origin.getTextManager();
 
-            await textManager.createText(
+            const createdText = await textManager.createText(
                 "test-text",
-                "test-unique-identifier",
             );
 
             const text = await textManager.getText(
-                "test-unique-identifier",
+                createdText.uniqueIdentifier,
             );
 
             assert(text !== null, "Text should not be null");

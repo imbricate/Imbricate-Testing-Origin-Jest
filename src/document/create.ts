@@ -14,6 +14,8 @@ export const startImbricateOriginDocumentCreateTest = (
 
     describe("Test Imbricate Document (Create) Functions", () => {
 
+        const identifierMap: Record<string, string> = {};
+
         beforeAll(async () => {
 
             await testingTarget.resetOrigin();
@@ -47,12 +49,13 @@ export const startImbricateOriginDocumentCreateTest = (
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
 
-            await database.createDocument({
+            const createdDocument = await database.createDocument({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
-            }, "test-unique-identifier");
+            });
+            identifierMap.test = createdDocument.uniqueIdentifier;
 
             const documents = await database.queryDocuments({});
 
@@ -70,7 +73,7 @@ export const startImbricateOriginDocumentCreateTest = (
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
 
-            const document = await database.getDocument("test-unique-identifier");
+            const document = await database.getDocument(identifierMap.test);
 
             assert(document !== null);
 
