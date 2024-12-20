@@ -5,8 +5,8 @@
  */
 
 import { IImbricateOrigin } from "@imbricate/core";
-import { ImbricateOriginTestingTarget } from "../testing-target";
 import assert from "node:assert";
+import { ImbricateOriginTestingTarget } from "../testing-target";
 
 export const startImbricateOriginTextCreateTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -28,13 +28,15 @@ export const startImbricateOriginTextCreateTest = (
                 "test-text",
             );
 
+            assert(typeof createdText !== "symbol");
+
             const text = await textManager.getText(
-                createdText.uniqueIdentifier,
+                createdText.text.uniqueIdentifier,
             );
 
-            assert(text !== null, "Text should not be null");
+            assert(typeof text !== "symbol");
 
-            const content = await text.getContent();
+            const content = await text.text.getContent();
 
             expect(content).toEqual("test-text");
         });

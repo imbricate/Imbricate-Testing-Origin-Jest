@@ -36,7 +36,7 @@ export const startImbricateOriginDatabaseCreateTest = (
 
             assert(typeof databases !== "symbol");
 
-            expect(databases).toHaveLength(1);
+            expect(databases.databases).toHaveLength(1);
         });
     });
 };

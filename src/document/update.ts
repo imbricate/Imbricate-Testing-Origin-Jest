@@ -42,9 +42,11 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const databases = await databaseManager.listDatabases();
 
-            expect(databases).toHaveLength(1);
+            assert(typeof databases !== "symbol");
 
-            const database = databases[0];
+            expect(databases.databases).toHaveLength(1);
+
+            const database = databases.databases[0];
 
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
@@ -73,7 +75,10 @@ export const startImbricateOriginDocumentUpdateTest = (
             const databaseManager = origin.getDatabaseManager();
 
             const databases = await databaseManager.listDatabases();
-            const database = databases[0];
+
+            assert(typeof databases !== "symbol");
+
+            const database = databases.databases[0];
 
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
@@ -108,7 +113,10 @@ export const startImbricateOriginDocumentUpdateTest = (
             const databaseManager = origin.getDatabaseManager();
 
             const databases = await databaseManager.listDatabases();
-            const database = databases[0];
+
+            assert(typeof databases !== "symbol");
+
+            const database = databases.databases[0];
 
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
@@ -145,7 +153,10 @@ export const startImbricateOriginDocumentUpdateTest = (
             const databaseManager = origin.getDatabaseManager();
 
             const databases = await databaseManager.listDatabases();
-            const database = databases[0];
+
+            assert(typeof databases !== "symbol");
+
+            const database = databases.databases[0];
 
             const document = await database.getDocument(identifierMap.test);
 
@@ -156,7 +167,10 @@ export const startImbricateOriginDocumentUpdateTest = (
             }
 
             const records = await document.document.getEditRecords();
-            expect(records).toHaveLength(1);
+
+            assert(typeof records !== "symbol");
+
+            expect(records.editRecords).toHaveLength(1);
         });
 
         it("should be able to get edit records after update edit record", async (): Promise<void> => {
@@ -165,7 +179,10 @@ export const startImbricateOriginDocumentUpdateTest = (
             const databaseManager = origin.getDatabaseManager();
 
             const databases = await databaseManager.listDatabases();
-            const database = databases[0];
+
+            assert(typeof databases !== "symbol");
+
+            const database = databases.databases[0];
 
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);

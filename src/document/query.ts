@@ -34,15 +34,17 @@ export const startImbricateOriginDocumentQueryTest = (
                 }],
             });
 
-            const firstDocument = await database.createDocument({
-                [database.schema.properties[0].propertyIdentifier]: {
+            assert(typeof database !== "symbol");
+
+            const firstDocument = await database.database.createDocument({
+                [database.database.schema.properties[0].propertyIdentifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "first",
                 },
             });
 
-            const secondDocument = await database.createDocument({
-                [database.schema.properties[0].propertyIdentifier]: {
+            const secondDocument = await database.database.createDocument({
+                [database.database.schema.properties[0].propertyIdentifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "second",
                 },
@@ -51,7 +53,7 @@ export const startImbricateOriginDocumentQueryTest = (
             assert(typeof firstDocument !== "symbol");
             assert(typeof secondDocument !== "symbol");
 
-            identifierMap.database = database.uniqueIdentifier;
+            identifierMap.database = database.database.uniqueIdentifier;
             identifierMap.first = firstDocument.document.uniqueIdentifier;
             identifierMap.second = secondDocument.document.uniqueIdentifier;
         });
@@ -63,11 +65,9 @@ export const startImbricateOriginDocumentQueryTest = (
 
             const database = await databaseManager.getDatabase(identifierMap.database);
 
-            if (!database) {
-                throw new Error("Database not found");
-            }
+            assert(typeof database !== "symbol");
 
-            const documents = await database.queryDocuments({});
+            const documents = await database.database.queryDocuments({});
 
             assert(typeof documents !== "symbol");
 
@@ -81,15 +81,13 @@ export const startImbricateOriginDocumentQueryTest = (
 
             const database = await databaseManager.getDatabase(identifierMap.database);
 
-            if (!database) {
-                throw new Error("Database not found");
-            }
+            assert(typeof database !== "symbol");
 
-            const limitDocuments = await database.queryDocuments({
+            const limitDocuments = await database.database.queryDocuments({
                 limit: 1,
             });
 
-            const skipDocuments = await database.queryDocuments({
+            const skipDocuments = await database.database.queryDocuments({
                 skip: 1,
             });
 

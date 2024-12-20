@@ -42,9 +42,9 @@ export const startImbricateOriginDocumentCreateTest = (
 
             const databases = await databaseManager.listDatabases();
 
-            expect(databases).toHaveLength(1);
+            assert(typeof databases !== "symbol");
 
-            const database = databases[0];
+            const database = databases.databases[0];
 
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
@@ -62,7 +62,9 @@ export const startImbricateOriginDocumentCreateTest = (
 
             const documents = await database.queryDocuments({});
 
-            expect(documents).toHaveLength(1);
+            assert(typeof documents !== "symbol");
+
+            expect(documents.documents).toHaveLength(1);
         });
 
         it("should be able to get document by unique identifier", async (): Promise<void> => {
@@ -71,7 +73,10 @@ export const startImbricateOriginDocumentCreateTest = (
             const databaseManager = origin.getDatabaseManager();
 
             const databases = await databaseManager.listDatabases();
-            const database = databases[0];
+
+            assert(typeof databases !== "symbol");
+
+            const database = databases.databases[0];
 
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
