@@ -6,6 +6,7 @@
 
 import { IImbricateOrigin, IMBRICATE_PROPERTY_TYPE } from "@imbricate/core";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import assert from "node:assert";
 
 export const startImbricateOriginDocumentQueryTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -47,9 +48,12 @@ export const startImbricateOriginDocumentQueryTest = (
                 },
             });
 
+            assert(typeof firstDocument !== "symbol");
+            assert(typeof secondDocument !== "symbol");
+
             identifierMap.database = database.uniqueIdentifier;
-            identifierMap.first = firstDocument.uniqueIdentifier;
-            identifierMap.second = secondDocument.uniqueIdentifier;
+            identifierMap.first = firstDocument.document.uniqueIdentifier;
+            identifierMap.second = secondDocument.document.uniqueIdentifier;
         });
 
         it("should be able to query all documents", async (): Promise<void> => {
@@ -65,7 +69,9 @@ export const startImbricateOriginDocumentQueryTest = (
 
             const documents = await database.queryDocuments({});
 
-            expect(documents).toHaveLength(2);
+            assert(typeof documents !== "symbol");
+
+            expect(documents.documents).toHaveLength(2);
         });
 
         it("should be able to query documents limit and skip", async (): Promise<void> => {
@@ -87,12 +93,13 @@ export const startImbricateOriginDocumentQueryTest = (
                 skip: 1,
             });
 
-            console.log(limitDocuments, skipDocuments);
+            assert(typeof limitDocuments !== "symbol");
+            assert(typeof skipDocuments !== "symbol");
 
-            expect(limitDocuments).toHaveLength(1);
-            expect(skipDocuments).toHaveLength(1);
+            expect(limitDocuments.documents).toHaveLength(1);
+            expect(skipDocuments.documents).toHaveLength(1);
 
-            expect(limitDocuments[0].uniqueIdentifier).not.toEqual(skipDocuments[0].uniqueIdentifier);
+            expect(limitDocuments.documents[0].uniqueIdentifier).not.toEqual(skipDocuments.documents[0].uniqueIdentifier);
         });
     });
 };

@@ -55,7 +55,10 @@ export const startImbricateOriginDocumentCreateTest = (
                     value: "world",
                 },
             });
-            identifierMap.test = createdDocument.uniqueIdentifier;
+
+            assert(typeof createdDocument !== "symbol");
+
+            identifierMap.test = createdDocument.document.uniqueIdentifier;
 
             const documents = await database.queryDocuments({});
 
@@ -75,9 +78,9 @@ export const startImbricateOriginDocumentCreateTest = (
 
             const document = await database.getDocument(identifierMap.test);
 
-            assert(document !== null);
+            assert(typeof document !== "symbol");
 
-            expect(document.properties).toEqual({
+            expect(document.document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",

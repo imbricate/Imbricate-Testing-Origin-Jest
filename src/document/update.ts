@@ -55,11 +55,16 @@ export const startImbricateOriginDocumentUpdateTest = (
                     value: "world",
                 },
             });
-            identifierMap.test = createdDocument.uniqueIdentifier;
+
+            assert(typeof createdDocument !== "symbol");
+
+            identifierMap.test = createdDocument.document.uniqueIdentifier;
 
             const documents = await database.queryDocuments({});
 
-            expect(documents).toHaveLength(1);
+            assert(typeof documents !== "symbol");
+
+            expect(documents.documents).toHaveLength(1);
         });
 
         it("should be able to update document with put property", async (): Promise<void> => {
@@ -75,21 +80,21 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument(identifierMap.test);
 
-            assert(document !== null, "Document should not be null");
+            assert(typeof document !== "symbol");
 
-            expect(document.properties).toEqual({
+            expect(document.document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
             });
 
-            await document.putProperty(identifier, {
+            await document.document.putProperty(identifier, {
                 type: IMBRICATE_PROPERTY_TYPE.STRING,
                 value: "new-world",
             });
 
-            expect(document.properties).toEqual({
+            expect(document.document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
@@ -110,23 +115,23 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument(identifierMap.test);
 
-            assert(document !== null, "Document should not be null");
+            assert(typeof document !== "symbol");
 
-            expect(document.properties).toEqual({
+            expect(document.document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
                 },
             });
 
-            await document.putProperties({
+            await document.document.putProperties({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
             });
 
-            expect(document.properties).toEqual({
+            expect(document.document.properties).toEqual({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
@@ -144,13 +149,13 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument(identifierMap.test);
 
-            assert(document !== null, "Document should not be null");
+            assert(typeof document !== "symbol");
 
-            if (typeof document.getEditRecords !== "function") {
+            if (typeof document.document.getEditRecords !== "function") {
                 return;
             }
 
-            const records = await document.getEditRecords();
+            const records = await document.document.getEditRecords();
             expect(records).toHaveLength(1);
         });
 
@@ -167,27 +172,28 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             const document = await database.getDocument(identifierMap.test);
 
-            assert(document !== null, "Document should not be null");
+            assert(typeof document !== "symbol");
 
-            const editRecords = await document.putProperties({
+            const editRecords = await document.document.putProperties({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "with-edit-records",
                 },
             });
 
-            if (typeof document.addEditRecords !== "function") {
+            assert(typeof editRecords !== "symbol");
+
+            await document.document.addEditRecords(editRecords.editRecords);
+
+            if (typeof document.document.getEditRecords !== "function") {
                 return;
             }
 
-            await document.addEditRecords(editRecords);
+            const records = await document.document.getEditRecords();
 
-            if (typeof document.getEditRecords !== "function") {
-                return;
-            }
+            assert(typeof records !== "symbol");
 
-            const records = await document.getEditRecords();
-            expect(records).toHaveLength(2);
+            expect(records.editRecords).toHaveLength(2);
         });
     });
 };

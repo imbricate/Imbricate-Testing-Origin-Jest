@@ -6,6 +6,7 @@
 
 import { IImbricateOrigin, IMBRICATE_PROPERTY_TYPE } from "@imbricate/core";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import assert from "assert";
 
 export const startImbricateOriginDatabaseCreateTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -32,6 +33,8 @@ export const startImbricateOriginDatabaseCreateTest = (
             });
 
             const databases = await databaseManager.listDatabases();
+
+            assert(typeof databases !== "symbol");
 
             expect(databases).toHaveLength(1);
         });
