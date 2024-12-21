@@ -4,7 +4,7 @@
  * @description Create
  */
 
-import { IImbricateOrigin } from "@imbricate/core";
+import { IImbricateOrigin, ImbricateTextGetContentOutcome } from "@imbricate/core";
 import assert from "node:assert";
 import { ImbricateOriginTestingTarget } from "../testing-target";
 
@@ -36,9 +36,11 @@ export const startImbricateOriginTextCreateTest = (
 
             assert(typeof text !== "symbol");
 
-            const content = await text.text.getContent();
+            const content: ImbricateTextGetContentOutcome = await text.text.getContent();
 
-            expect(content).toEqual("test-text");
+            assert(typeof content !== "symbol");
+
+            expect(content.content).toEqual("test-text");
         });
     });
 };
