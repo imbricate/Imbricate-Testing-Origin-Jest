@@ -94,9 +94,11 @@ export const startImbricateOriginDocumentUpdateTest = (
                 },
             });
 
-            await document.document.putProperty(identifier, {
-                type: IMBRICATE_PROPERTY_TYPE.STRING,
-                value: "new-world",
+            await document.document.mergeProperties({
+                [identifier]: {
+                    type: IMBRICATE_PROPERTY_TYPE.STRING,
+                    value: "new-world",
+                },
             });
 
             expect(document.document.properties).toEqual({
@@ -132,7 +134,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 },
             });
 
-            await document.document.putProperties({
+            await document.document.replaceProperties({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
@@ -191,7 +193,7 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(typeof document !== "symbol");
 
-            const editRecords = await document.document.putProperties({
+            const editRecords = await document.document.replaceProperties({
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "with-edit-records",
