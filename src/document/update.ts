@@ -40,7 +40,7 @@ export const startImbricateOriginDocumentUpdateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.listDatabases();
+            const databases = await databaseManager.queryDatabases({});
 
             assert(typeof databases !== "symbol");
 
@@ -74,7 +74,7 @@ export const startImbricateOriginDocumentUpdateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.listDatabases();
+            const databases = await databaseManager.queryDatabases({});
 
             assert(typeof databases !== "symbol");
 
@@ -114,7 +114,7 @@ export const startImbricateOriginDocumentUpdateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.listDatabases();
+            const databases = await databaseManager.queryDatabases({});
 
             assert(typeof databases !== "symbol");
 
@@ -154,7 +154,7 @@ export const startImbricateOriginDocumentUpdateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.listDatabases();
+            const databases = await databaseManager.queryDatabases({});
 
             assert(typeof databases !== "symbol");
 
@@ -180,7 +180,7 @@ export const startImbricateOriginDocumentUpdateTest = (
             const origin: IImbricateOrigin = testingTarget.ensureOrigin();
             const databaseManager = origin.getDatabaseManager();
 
-            const databases = await databaseManager.listDatabases();
+            const databases = await databaseManager.queryDatabases({});
 
             assert(typeof databases !== "symbol");
 

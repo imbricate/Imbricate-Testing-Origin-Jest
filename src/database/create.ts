@@ -32,7 +32,7 @@ export const startImbricateOriginDatabaseCreateTest = (
                 }],
             });
 
-            const databases = await databaseManager.listDatabases();
+            const databases = await databaseManager.queryDatabases({});
 
             assert(typeof databases !== "symbol");
 
