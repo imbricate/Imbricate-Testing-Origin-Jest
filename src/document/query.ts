@@ -36,19 +36,21 @@ export const startImbricateOriginDocumentQueryTest = (
 
             assert(typeof database !== "symbol");
 
-            const firstDocument = await database.database.createDocument({
-                [database.database.schema.properties[0].propertyIdentifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "first",
-                },
-            });
+            const firstDocument = await database.database.createDocument((createProperty) => [
+                createProperty(
+                    database.database.schema.properties[0].propertyIdentifier,
+                    IMBRICATE_PROPERTY_TYPE.STRING,
+                    "first",
+                ),
+            ]);
 
-            const secondDocument = await database.database.createDocument({
-                [database.database.schema.properties[0].propertyIdentifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "second",
-                },
-            });
+            const secondDocument = await database.database.createDocument((createProperty) => [
+                createProperty(
+                    database.database.schema.properties[0].propertyIdentifier,
+                    IMBRICATE_PROPERTY_TYPE.STRING,
+                    "second",
+                ),
+            ]);
 
             assert(typeof firstDocument !== "symbol");
             assert(typeof secondDocument !== "symbol");

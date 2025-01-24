@@ -7,6 +7,7 @@
 import { IImbricateOrigin, IMBRICATE_PROPERTY_TYPE } from "@imbricate/core";
 import assert from "node:assert";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { comparePropertiesOutcome } from "../util/compare-property";
 
 export const startImbricateOriginDocumentUpdateTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -51,11 +52,15 @@ export const startImbricateOriginDocumentUpdateTest = (
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
 
-            const createdDocument = await database.createDocument({
-                [identifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "world",
-                },
+            const createdDocument = await database.createDocument((createProperty) => {
+
+                return [
+                    createProperty(
+                        identifier,
+                        IMBRICATE_PROPERTY_TYPE.STRING,
+                        "world",
+                    ),
+                ];
             });
 
             assert(typeof createdDocument !== "symbol");
@@ -87,26 +92,29 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(typeof document !== "symbol");
 
-            expect(document.document.properties).toEqual({
+            expect(comparePropertiesOutcome(document.document.getProperties(), {
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
+            })).toBeTruthy();
+
+            await document.document.mergeProperties((createProperty) => {
+                return [
+                    createProperty(
+                        identifier,
+                        IMBRICATE_PROPERTY_TYPE.STRING,
+                        "new-world",
+                    ),
+                ];
             });
 
-            await document.document.mergeProperties({
+            expect(comparePropertiesOutcome(document.document.getProperties(), {
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
                 },
-            });
-
-            expect(document.document.properties).toEqual({
-                [identifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "new-world",
-                },
-            });
+            })).toBeTruthy();
         });
 
         it("should be able to update document with put properties", async (): Promise<void> => {
@@ -127,26 +135,29 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(typeof document !== "symbol");
 
-            expect(document.document.properties).toEqual({
+            expect(comparePropertiesOutcome(document.document.getProperties(), {
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
                 },
+            })).toBeTruthy();
+
+            await document.document.replaceProperties((createProperty) => {
+                return [
+                    createProperty(
+                        identifier,
+                        IMBRICATE_PROPERTY_TYPE.STRING,
+                        "world",
+                    ),
+                ];
             });
 
-            await document.document.replaceProperties({
+            expect(comparePropertiesOutcome(document.document.getProperties(), {
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
-            });
-
-            expect(document.document.properties).toEqual({
-                [identifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "world",
-                },
-            });
+            })).toBeTruthy();
         });
 
         it("should be able to get edit records without update edit record", async (): Promise<void> => {
@@ -193,11 +204,14 @@ export const startImbricateOriginDocumentUpdateTest = (
 
             assert(typeof document !== "symbol");
 
-            const editRecords = await document.document.replaceProperties({
-                [identifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "with-edit-records",
-                },
+            const editRecords = await document.document.replaceProperties((createProperty) => {
+                return [
+                    createProperty(
+                        identifier,
+                        IMBRICATE_PROPERTY_TYPE.STRING,
+                        "with-edit-records",
+                    ),
+                ];
             });
 
             assert(typeof editRecords !== "symbol");

@@ -7,6 +7,7 @@
 import { IImbricateOrigin, IMBRICATE_PROPERTY_TYPE } from "@imbricate/core";
 import assert from "node:assert";
 import { ImbricateOriginTestingTarget } from "../testing-target";
+import { comparePropertiesOutcome } from "../util/compare-property";
 
 export const startImbricateOriginDocumentCreateTest = (
     testingTarget: ImbricateOriginTestingTarget,
@@ -49,12 +50,13 @@ export const startImbricateOriginDocumentCreateTest = (
             const identifier = database.schema.properties[0].propertyIdentifier;
             assert(identifier !== null);
 
-            const createdDocument = await database.createDocument({
-                [identifier]: {
-                    type: IMBRICATE_PROPERTY_TYPE.STRING,
-                    value: "world",
-                },
-            });
+            const createdDocument = await database.createDocument((createProperty) => [
+                createProperty(
+                    identifier,
+                    IMBRICATE_PROPERTY_TYPE.STRING,
+                    "world",
+                ),
+            ]);
 
             assert(typeof createdDocument !== "symbol");
 
@@ -85,12 +87,12 @@ export const startImbricateOriginDocumentCreateTest = (
 
             assert(typeof document !== "symbol");
 
-            expect(document.document.properties).toEqual({
+            expect(comparePropertiesOutcome(document.document.getProperties(), {
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
                 },
-            });
+            })).toBeTruthy();
         });
     });
 };
