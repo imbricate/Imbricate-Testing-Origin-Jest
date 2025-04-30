@@ -55,6 +55,7 @@ export const startImbricateOriginDocumentCreateTest = (
                     identifier,
                     IMBRICATE_PROPERTY_TYPE.STRING,
                     "world",
+                    null,
                 ),
             ]);
 
@@ -91,6 +92,51 @@ export const startImbricateOriginDocumentCreateTest = (
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
+                    variant: null,
+                },
+            })).toBeTruthy();
+        });
+
+        it("should be able to create document with variant property", async (): Promise<void> => {
+
+            const origin: IImbricateOrigin = testingTarget.ensureOrigin();
+            const databaseManager = origin.getDatabaseManager();
+
+            const databases = await databaseManager.queryDatabases({});
+
+            assert(typeof databases !== "symbol");
+
+            const database = databases.databases[0];
+
+            const identifier = database.schema.properties[0].propertyIdentifier;
+            assert(identifier !== null);
+
+            const createdDocument = await database.createDocument((createProperty) => [
+                createProperty(
+                    identifier,
+                    IMBRICATE_PROPERTY_TYPE.STRING,
+                    "world",
+                    "variant",
+                ),
+            ]);
+
+            assert(typeof createdDocument !== "symbol");
+
+            identifierMap.test = createdDocument.document.uniqueIdentifier;
+
+            const documents = await database.queryDocuments({});
+
+            assert(typeof documents !== "symbol");
+
+            expect(documents.documents).toHaveLength(2);
+
+            const document = documents.documents[1];
+
+            expect(comparePropertiesOutcome(document.getProperties(), {
+                [identifier]: {
+                    type: IMBRICATE_PROPERTY_TYPE.STRING,
+                    value: "world",
+                    variant: "variant",
                 },
             })).toBeTruthy();
         });

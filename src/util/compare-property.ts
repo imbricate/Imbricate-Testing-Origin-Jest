@@ -4,11 +4,12 @@
  * @description Compare Property
  */
 
-import { IImbricateProperty, IMBRICATE_PROPERTY_TYPE, ImbricateDocumentGetPropertiesOutcome, ImbricatePropertyRecord } from "@imbricate/core";
+import { IImbricateProperty, IMBRICATE_PROPERTY_TYPE, ImbricateDocumentGetPropertiesOutcome, ImbricatePropertyRecord, ImbricatePropertyVariant } from "@imbricate/core";
 
 export type ExpectedProperty = {
     type: IMBRICATE_PROPERTY_TYPE;
     value: string;
+    variant: ImbricatePropertyVariant;
 };
 
 export type ExpectedProperties = {
@@ -21,7 +22,8 @@ export const compareProperty = (
 ): boolean => {
 
     return property.propertyType === expected.type
-        && property.propertyValue === expected.value;
+        && property.propertyValue === expected.value
+        && property.propertyVariant === expected.variant;
 };
 
 export const compareProperties = (

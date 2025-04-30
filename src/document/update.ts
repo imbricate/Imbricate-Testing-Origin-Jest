@@ -59,6 +59,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                         identifier,
                         IMBRICATE_PROPERTY_TYPE.STRING,
                         "world",
+                        null,
                     ),
                 ];
             });
@@ -96,6 +97,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
+                    variant: null,
                 },
             })).toBeTruthy();
 
@@ -105,6 +107,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                         identifier,
                         IMBRICATE_PROPERTY_TYPE.STRING,
                         "new-world",
+                        null,
                     ),
                 ];
             });
@@ -113,6 +116,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
+                    variant: null,
                 },
             })).toBeTruthy();
         });
@@ -139,6 +143,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "new-world",
+                    variant: null,
                 },
             })).toBeTruthy();
 
@@ -148,6 +153,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                         identifier,
                         IMBRICATE_PROPERTY_TYPE.STRING,
                         "world",
+                        null,
                     ),
                 ];
             });
@@ -156,6 +162,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                 [identifier]: {
                     type: IMBRICATE_PROPERTY_TYPE.STRING,
                     value: "world",
+                    variant: null,
                 },
             })).toBeTruthy();
         });
@@ -210,6 +217,7 @@ export const startImbricateOriginDocumentUpdateTest = (
                         identifier,
                         IMBRICATE_PROPERTY_TYPE.STRING,
                         "with-edit-records",
+                        null,
                     ),
                 ];
             });

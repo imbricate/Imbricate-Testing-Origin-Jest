@@ -41,6 +41,7 @@ export const startImbricateOriginDocumentQueryTest = (
                     database.database.schema.properties[0].propertyIdentifier,
                     IMBRICATE_PROPERTY_TYPE.STRING,
                     "first",
+                    null,
                 ),
             ]);
 
@@ -49,6 +50,7 @@ export const startImbricateOriginDocumentQueryTest = (
                     database.database.schema.properties[0].propertyIdentifier,
                     IMBRICATE_PROPERTY_TYPE.STRING,
                     "second",
+                    null,
                 ),
             ]);
 
